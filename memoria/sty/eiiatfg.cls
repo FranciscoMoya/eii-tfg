@@ -6,8 +6,6 @@
 \ProcessOptions\relax
 \LoadClass{book}
 
-\makeatletter
-
 \setlength{\unitlength}{1mm}
 
 % https://tug.org/pipermail/pstricks/2011/009122.html
@@ -16,24 +14,31 @@
 % Codificación UTF8
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[spanish, es-tabla]{babel}
+\usepackage[spanish,es-tabla,es-noshorthands]{babel}
 \usepackage[
     backend=biber, 
     %style=ieee,
     %style=alphabetic,
     style=ieee-alphabetic,
     sorting=nty]{biblatex}
-\usepackage{makecell}
+\usepackage[hyperfootnotes=false]{hyperref}
 \usepackage{times}
-\usepackage[dvipsnames]{xcolor}
 \usepackage{enumerate}
 \usepackage{enumitem}
 \usepackage{bookmark}
-\usepackage{float}
 \usepackage{datetime2}
-\usepackage{graphicx}
+\usepackage{makecell}
+\usepackage[dvipsnames]{xcolor}
 \usepackage{multirow}
-\usepackage{subfigure}
+\usepackage[%
+    font={small,sf},
+    labelfont=bf,
+    format=hang,    
+    format=plain,
+    margin=0pt,
+    width=0.8\textwidth,
+]{caption}
+\usepackage[list=true]{subcaption}
 \usepackage{appendix}
 \usepackage{listings}
 \usepackage{longtable}
@@ -44,7 +49,6 @@
 \usepackage{emptypage}
 \usepackage{setspace}
 \usepackage{textcomp}
-\usepackage{caption}
 \usepackage{footmisc}
 \usepackage{csquotes}
 \usepackage{rotating}
@@ -52,7 +56,6 @@
 \usepackage{xstring}
 \usepackage{pdfpages}
 \usepackage{amsmath}
-\usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage{ifthen}
 \usepackage{currfile}
@@ -78,6 +81,7 @@
 \graphicspath{{fig/}}
 
 \pagestyle{headings}
+
 \renewcommand{\bibname}{Referencias}
 \renewcommand{\appendixname}{Anexo}
 \renewcommand{\appendixtocname}{Anexo}
@@ -106,7 +110,7 @@
 \usepackage{entornos}
 \usepackage{indices}
 \usepackage{admonition}
-\usepackage{acronimos}
+
 
 \setlist[description]{style=nextline,labelwidth=0pt,leftmargin=30pt,itemindent=\dimexpr-20pt-\labelsep\relax} % Global Setup Description List
 
@@ -115,6 +119,7 @@
 }
 
 
+\if0 % Conflicto con acrónimos
 \makeatletter % Redefinition of Description List Items source: http://tex.stackexchange.com/a/1248/13552
 \let\orgdescriptionlabel\descriptionlabel
 \renewcommand*{\descriptionlabel}[1]{%
@@ -127,3 +132,4 @@
   \orgdescriptionlabel{#1}%
 }
 \makeatother
+\fi

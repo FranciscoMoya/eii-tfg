@@ -1,6 +1,7 @@
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 
 \newcommand{\portada}{%
+    \pagenumbering{roman}
     \newgeometry{%
         left=20mm,right=15mm,
         top=15mm, bottom=15mm}
@@ -52,7 +53,7 @@
         \emph{Tutor\multi@tutor{}:}   \> \parbox[t]{.7\textwidth}{\@advisor\\} \\
         \ifdefempty{\@email}   {}{\emph{E-mail:}   \> \@email \\}
         \ifdefempty{\@phone}   {}{\emph{Teléfono:} \> \@phone \\}
-        \ifdefempty{\@homepage}{}{\emph{Web site:} \> \url{\@homepage} \\}
+        \ifdefempty{\@homepage}{}{\emph{Sitio web:} \> \url{\@homepage} \\}
         \ifdefempty{\@address} {}{\emph{Dirección:} \> \parbox[t]{.7\textwidth}{%
             \@address \\ 
             \ifdefempty{\@zipcode} {}{\@zipcode~}\@city\ -- \@country  
