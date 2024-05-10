@@ -8,25 +8,57 @@
 
 \setlength{\unitlength}{1mm}
 
-% https://tug.org/pipermail/pstricks/2011/009122.html
-\usepackage{etex}
+\usepackage{fontspec}
+\usepackage[hyperfootnotes=false]{hyperref}
+\usepackage[babelshorthands=true] {polyglossia}
+\setdefaultlanguage{spanish}
+\setotherlanguages{english,french,german}
 
-% Codificación UTF8
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[spanish,es-tabla,es-noshorthands]{babel}
+\appto{\blockextras@spanish}{%
+    \def\figureautorefname{Figura}%
+    \def\tableautorefname{Tabla}%
+    \def\partautorefname{Parte}%
+    \def\appendixautorefname{Anexo}%
+    \def\chapterautorefname{Capítulo}%
+    \def\sectionautorefname{Sección}%
+}
+
+\appto{\blockextras@english}{%
+    \def\figureautorefname{Figure}%
+    \def\tableautorefname{Table}%
+    \def\partautorefname{Part}%
+    \def\appendixautorefname{Appendix}%
+    \def\chapterautorefname{Chapter}%
+    \def\sectionautorefname{Section}%
+}
+
+\appto{\blockextras@french}{%
+    \def\figureautorefname{Figure}%
+    \def\tableautorefname{Tableau}%
+    \def\partautorefname{Partie}%
+    \def\appendixautorefname{Annexe}%
+    \def\chapterautorefname{Chapitre}%
+    \def\sectionautorefname{Section}%
+}
+
+\appto{\blockextras@german}{%
+    \def\figureautorefname{Abbildung}%
+    \def\tableautorefname{Tabelle}%
+    \def\partautorefname{Teil}%
+    \def\appendixautorefname{Anhang}%
+    \def\chapterautorefname{Kapitel}%
+    \def\sectionautorefname{Abschnitt}%
+}
+
 \usepackage[
     backend=biber, 
-    %style=ieee,
     %style=alphabetic,
+    %style=ieee,
     style=ieee-alphabetic,
     sorting=nty]{biblatex}
-\usepackage[hyperfootnotes=false]{hyperref}
-\usepackage{times}
 \usepackage{enumerate}
 \usepackage{enumitem}
 \usepackage{bookmark}
-\usepackage{datetime2}
 \usepackage{makecell}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{multirow}
@@ -82,11 +114,6 @@
 
 \pagestyle{headings}
 
-\renewcommand{\bibname}{Referencias}
-\renewcommand{\appendixname}{Anexo}
-\renewcommand{\appendixtocname}{Anexo}
-\renewcommand{\appendixpagename}{Anexo}
-
 \definecolor{gris30}{gray}{0.30}
 \definecolor{gris85}{gray}{0.85}
 \definecolor{gris20}{gray}{0.20}
@@ -111,6 +138,9 @@
 \usepackage{indices}
 \usepackage{admonition}
 
+\setmainfont{STIX Two Text}
+\setsansfont{Arial}
+\setmonofont{Noto Sans Mono}
 
 \setlist[description]{style=nextline,labelwidth=0pt,leftmargin=30pt,itemindent=\dimexpr-20pt-\labelsep\relax} % Global Setup Description List
 
@@ -118,18 +148,3 @@
   \hyperlink{#1}{#2}%
 }
 
-
-\if0 % Conflicto con acrónimos
-\makeatletter % Redefinition of Description List Items source: http://tex.stackexchange.com/a/1248/13552
-\let\orgdescriptionlabel\descriptionlabel
-\renewcommand*{\descriptionlabel}[1]{%
-  \let\orglabel\label
-  \let\label\@gobble
-  \phantomsection
-  \protected@edef\@currentlabel{#1}%
-  %\edef\@currentlabelname{#1}%
-  \let\label\orglabel
-  \orgdescriptionlabel{#1}%
-}
-\makeatother
-\fi

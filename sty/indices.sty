@@ -1,5 +1,7 @@
 \newcommand{\@listofsymbols}{}
-\newcommand{\listofsymbols}[1]{\renewcommand{\@listofsymbols}{\input{#1}}}
+\newcommand{\listofsymbols}[1]{\renewcommand{\@listofsymbols}{%
+    \chapter*{Lista de símbolos}
+    \input{#1}}}
 
 \newcommand{\indices}{%
     \pagenumbering{roman}
